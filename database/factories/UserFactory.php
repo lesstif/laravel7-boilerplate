@@ -18,11 +18,25 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+    $email_verified_at = null;
+    $remember_token = null;
+
+    $service_started_at = '-10 years';
+
+    $created_at = $faker->dateTimeBetween($service_started_at, 'now');
+
+    // 10번 중 한 번은 email 검증 안 함 상태로 설정
+    if (mt_rand(1, 10) !== 7) {
+        $email_verified_at = $faker->dateTimeBetween($service_started_at, 'now');
+        $remember_token = Str::random(10);
+    }
+
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'email_verified_at' => $email_verified_at,
+        'password' => bcrypt('secret'),
+        'remember_token' => $remember_token,
+        'created_at' => $created_at,
     ];
 });
