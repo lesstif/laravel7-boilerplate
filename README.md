@@ -13,6 +13,11 @@
 
 [mailhog](https://github.com/mailhog/MailHog) 를 사용하니 다운받아서 설치하세요. (**[참고자료](https://www.lesstif.com/software-architect/mailhog-smtp-email-server-61906418.html)**)
 
+### logging
+
+logging 채널은 daily 이며 120 일간 저장합니다. *artisan* 으로 실행하는 console log 는 *storage/logs/laravel-cli-YYYY-MM-DD.log* 형식으로 저장됩니다.
+(**[참고자료](https://www.lesstif.com/php-and-laravel/laravel-log-file-permission-48103448.html)**)
+
 ## 설치
 
 1. 저장소 복제
