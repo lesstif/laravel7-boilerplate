@@ -53,7 +53,9 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
+            // FIXME mysql 8 이 아닐 경우 utf8mb4_unicode_ci 로 설정
+            'collation' => 'utf8mb4_0900_ai_ci',
+            //'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
