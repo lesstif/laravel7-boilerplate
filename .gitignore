@@ -17,3 +17,4 @@ _ide_helper_models.php
 /nova
 *.sqlite
 /database/*.sqlite
+composer.lock
