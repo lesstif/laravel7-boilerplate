@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
 
         // fake data 생성 여부
         if (! App::environment('production') && env('CREATE_FAKE_DATA') == 'true') {
-            factory(App\Models\ProjectCategory::class, 20)->create();
-            factory(App\Models\Project::class, 100)->create();
+            factory(App\Models\ProjectCategory::class, 23)->create();
+            factory(App\Models\Project::class, 83)->create();
+            factory(App\Models\Task::class, 317)->create();
         }
     }
 }

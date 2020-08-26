@@ -16,15 +16,17 @@ class UserSeeder extends Seeder
             [
                 'name' => 'super user1',
                 'email' => 'lesstif@gmail.com',
+                'enable_debugbar' => true,
             ],
             [
                 'name' => 'super user2',
                 'email' => 'root@example.com',
+                'enable_debugbar' => true,
             ],
         ];
 
         foreach ($admins as $admin) {
-            $admin['password'] = bcrypt('password');
+            $admin['password'] = bcrypt('qwert123');
             $admin['remember_token'] = Str::random(10);
 
             $u = User::create($admin);

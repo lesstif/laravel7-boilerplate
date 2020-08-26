@@ -18,3 +18,4 @@ _ide_helper_models.php
 *.sqlite
 /database/*.sqlite
 composer.lock
+drop-table*

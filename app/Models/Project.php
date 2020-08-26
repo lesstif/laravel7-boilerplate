@@ -10,6 +10,11 @@ class Project extends Model
 
     public function project_category()
     {
-        return $this->belongsTo(Project::class, 'project_category_id', 'id');
+        return $this->belongsTo(ProjectCategory::class, 'project_category_id', 'id');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'project_id', 'id');
     }
 }
