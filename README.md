@@ -8,6 +8,7 @@
 
 - **[laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper/)**
 - **[laravel-debugbar](https://github.com/barryvdh/laravel-debugbar)**
+- **[laravel-frontend-presets](https://github.com/laravel-frontend-presets/tailwindcss)**
 
 ### MAIL
 

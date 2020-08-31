@@ -34,6 +34,6 @@ Route::get('debugbar', [\App\Http\Controllers\DebugBarOnOffController::class, 's
 // project route
 Route::get('/projects', [ProjectController::class, 'list'])->name('projects');
 Route::get('/projects/list', [ProjectController::class, 'list'])->name('projects.list');
-Route::get('/projects/view', [ProjectController::class, 'view'])->name('projects.view');
+Route::get('/projects/view/{id}', [ProjectController::class, 'view'])->name('projects.view');
 Route::post('/projects/add', [ProjectController::class, 'projects.add'])->name('projects.add');
 Route::post('/projects/modify', [ProjectController::class, 'projects.modify'])->name('projects.modify');
