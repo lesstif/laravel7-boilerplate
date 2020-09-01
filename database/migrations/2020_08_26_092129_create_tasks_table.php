@@ -20,6 +20,10 @@ class CreateTasksTable extends Migration
             $table->foreign('project_id')
                 ->references('id')
                 ->on('projects');
+            $table->unsignedBigInteger('status_id')->nullable();
+            $table->foreign('status_id')
+                ->references('id')
+                ->on('task_statuses');
 
             // 담당자
             $table->unsignedBigInteger('assignee_id')->nullable();
@@ -33,6 +37,7 @@ class CreateTasksTable extends Migration
             $table->dateTime('due_date')->nullable();
             $table->boolean('is_reminder')->default(false);
             $table->dateTime('reminder_at')->nullable();
+            $table->dateTime('completed_at')->nullable();
 
             $table->text('file')->nullable();
 

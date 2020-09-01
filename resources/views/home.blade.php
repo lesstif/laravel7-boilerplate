@@ -1,27 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex items-center">
-        <div class="md:w-1/2 md:mx-auto">
+    <table class="border-collapse w-full">
+        <thead>
+        <tr>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Task</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Project</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Status</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Due date</th>
+            <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Action</th>
+        </tr>
+        </thead>
+        <tbody>
 
-            @if (session('status'))
-                <div class="text-sm border border-t-8 rounded text-green-700 border-green-600 bg-green-100 px-3 py-4 mb-4" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <div class="flex flex-col break-words bg-white border border-2 rounded shadow-md">
-
-                <div class="font-semibold bg-gray-200 text-gray-700 py-3 px-6 mb-0">
-                    Dashboard
-                </div>
-
-                <div class="w-full p-6">
-                    <p class="text-gray-700">
-                        You are logged in!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+        @foreach($tasks_in_due as $task)
+        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
+                {{ $task->name }}
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"></span>
+                <a href="{{ route('projects.view', $task->project->id) }}">{{ $task->project->name }}</a>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
+                <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">{{ $task->status->name }}</span>
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"></span>
+                {{ $task->due_date }}
+            </td>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
+                <a href="{{ route('tasks.edit', $task->id) }}" class="text-blue-400 hover:text-blue-600 underline">Edit</a>
+                <a href="{{ route('tasks.edit', $task->id) }}" class="text-blue-400 hover:text-blue-600 underline pl-6">Remove</a>
+            </td>
+        </tr>
+        @endforeach
+        </tbody>
+    </table>
 @endsection

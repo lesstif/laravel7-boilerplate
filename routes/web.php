@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,11 +30,20 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'showRegistrationForm']);
 
 //
-Route::get('debugbar', [\App\Http\Controllers\DebugBarOnOffController::class, 'set']);
+//Route::get('debugbar', [\App\Http\Controllers\DebugBarOnOffController::class, 'set']);
 
 // project route
 Route::get('/projects', [ProjectController::class, 'list'])->name('projects');
 Route::get('/projects/list', [ProjectController::class, 'list'])->name('projects.list');
 Route::get('/projects/view/{id}', [ProjectController::class, 'view'])->name('projects.view');
-Route::post('/projects/add', [ProjectController::class, 'projects.add'])->name('projects.add');
-Route::post('/projects/modify', [ProjectController::class, 'projects.modify'])->name('projects.modify');
+Route::post('/projects/add', [ProjectController::class, 'add'])->name('projects.add');
+Route::get('/projects/edit/{id}', [ProjectController::class, 'viewEditForm'])->name('projects.edit');
+Route::post('/projects/edit/{id}', [ProjectController::class, 'edit']);
+
+// tasks route
+Route::get('/tasks', [TaskController::class, 'list'])->name('tasks');
+Route::get('/tasks/list', [TaskController::class, 'list'])->name('tasks.list');
+Route::get('/tasks/view/{id}', [TaskController::class, 'view'])->name('tasks.view');
+Route::post('/tasks/add', [TaskController::class, 'add'])->name('tasks.add');
+Route::get('/tasks/edit/{id}', [TaskController::class, 'viewEditForm'])->name('tasks.edit');
+Route::post('/tasks/edit/{id}', [TaskController::class, 'edit']);

@@ -19,3 +19,10 @@ _ide_helper_models.php
 /database/*.sqlite
 composer.lock
 drop-table*
+public/vendor/nova/
+app/Providers/NovaServiceProvider.php
+app/Nova/
+resources/lang/vendor/nova
+config/nova.php
+public/css/app.css
+public/js/app.js

@@ -13,7 +13,7 @@ $factory->define(App\Models\Project::class, function (Faker $faker) {
 
     return [
         'project_category_id' => $project_category_id,
-        'name' => $faker->realText(20),
+        'name' => $faker->company . $faker->companySuffix,
         'desc' => $faker->realText,
         'url' => $faker->url,
         'created_at' => $faker->dateTimeBetween('-3 years', 'now'),

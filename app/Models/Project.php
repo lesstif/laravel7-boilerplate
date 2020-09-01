@@ -8,6 +8,8 @@ class Project extends Model
 {
     protected $guarded = ['id'];
 
+    protected $with = ['project_category', ];
+
     public function project_category()
     {
         return $this->belongsTo(ProjectCategory::class, 'project_category_id', 'id');

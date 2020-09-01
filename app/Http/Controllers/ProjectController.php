@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Transformers\ProjectTransformer;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -14,7 +15,9 @@ class ProjectController extends Controller
 
     public function list(Request $request)
     {
-        return Project::all();
+        $projects = Project::all();
+
+        return fractal($projects, new ProjectTransformer())->toArray();
     }
 
     public function view(Request $request, int $id)
