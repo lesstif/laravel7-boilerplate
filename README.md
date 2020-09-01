@@ -53,6 +53,20 @@ logging 채널은 daily 이며 120 일간 저장합니다. *artisan* 으로 실�
     php artisan ide-helper:meta
     php artisan ide-helper:models 
     ```
+      
+1. optimus 로 prime 생성 
+
+    ```
+    php vendor/bin/optimus spark    
+    ```   
+
+1. 생성된 prime 을 .env 에 적용 
+   
+   ```
+   OPTIMUS_PRIME=7
+   OPTIMUS_INVERSE=11
+   OPTIMUS_XOR=13
+   ```
    
 ## Contributing
 
