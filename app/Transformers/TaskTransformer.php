@@ -3,6 +3,8 @@
 namespace App\Transformers;
 
 use App\Models\Task;
+use App\Providers\OptimusServiceProvider;
+use Jenssegers\Optimus\Optimus;
 use League\Fractal\TransformerAbstract;
 
 class TaskTransformer extends TransformerAbstract
@@ -32,8 +34,10 @@ class TaskTransformer extends TransformerAbstract
      */
     public function transform(Task $task)
     {
+        $optimus = app()->make(Optimus::class);
+
         return [
-            'id'      => (int) $task->id,
+            'id'      => $optimus->encode((int) $task->id),
             'name'   => $task->name,
             'created_at'    => $task->created_at,
             'project'  => [

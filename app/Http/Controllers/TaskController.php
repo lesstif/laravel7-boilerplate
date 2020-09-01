@@ -10,6 +10,7 @@ use App\Transformers\TaskTransformer;
 use Auth;
 use Cache;
 use Illuminate\Http\Request;
+use Jenssegers\Optimus\Optimus;
 
 class TaskController extends Controller
 {
@@ -27,9 +28,11 @@ class TaskController extends Controller
      * @param Request $request
      * @param int $id
      */
-    public function viewEditForm(Request $request, int $id)
+    public function viewEditForm(Request $request, int $id,  Optimus $optimus)
     {
-        $task = Task::find($id);
+        $orig_id = $optimus->decode($id);
+
+        $task = Task::find($orig_id);
 
         $task_statuses = get_all_models_from_cache_or_put('task_statuses.all', TaskStatus::class);
         $projects       = get_all_models_from_cache_or_put('projects.all', Project::class);
@@ -39,5 +42,14 @@ class TaskController extends Controller
             ->with('task_statuses', fractal($task_statuses, new TaskStatusTransformer())->toArray())
             ->with('projects', fractal($projects, new ProjectTransformer())->toArray())
             ;
+    }
+
+    public function view(Request $request, int $id,  Optimus $optimus)
+    {
+        $orig_id = $optimus->decode($id);
+
+        $task = Task::find($orig_id);
+
+        return fractal($task, new TaskTransformer())->toArray();
     }
 }

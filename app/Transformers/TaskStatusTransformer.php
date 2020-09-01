@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use App\Models\TaskStatus;
+use Jenssegers\Optimus\Optimus;
 use League\Fractal\TransformerAbstract;
 
 class TaskStatusTransformer extends TransformerAbstract
@@ -33,8 +34,10 @@ class TaskStatusTransformer extends TransformerAbstract
      */
     public function transform(TaskStatus $status)
     {
+        $optimus = app()->make(Optimus::class);
+
         return [
-            'id'      => (int) $status->id,
+            'id'      => $optimus->encode((int) $status->id),
             'name'   => $status->name,
             'created_at'    => $status->created_at,
         ];

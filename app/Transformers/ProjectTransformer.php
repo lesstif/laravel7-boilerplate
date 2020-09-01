@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use App\Models\Project;
+use Jenssegers\Optimus\Optimus;
 use League\Fractal\TransformerAbstract;
 
 class ProjectTransformer extends TransformerAbstract
@@ -33,8 +34,10 @@ class ProjectTransformer extends TransformerAbstract
      */
     public function transform(Project $project)
     {
+        $optimus = app()->make(Optimus::class);
+
         return [
-            'id'      => (int) $project->id,
+            'id'      => $optimus((int) $project->id),
             'name'   => $project->name,
             'created_at'    => $project->created_at,
             'project_category'  => [
