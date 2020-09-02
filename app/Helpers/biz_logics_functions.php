@@ -7,7 +7,7 @@
 /**
  * 숫자만 남김
  *
- * @param $val
+ * @param string $val
  *
  * @return string
  */
@@ -16,6 +16,12 @@ function remain_number_only(string $val)
     return preg_replace("/[^0-9]/", "", $val);
 }
 
+/**
+ *
+ * @param string $key
+ * @param string $model
+ * @return \Illuminate\Support\Collection
+ */
 function get_all_models_from_cache_or_put(string $key, string $model) : \Illuminate\Support\Collection
 {
     $d = Cache::get('key');

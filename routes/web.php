@@ -29,9 +29,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'showRegistrationForm']);
 
-//
-//Route::get('debugbar', [\App\Http\Controllers\DebugBarOnOffController::class, 'set']);
-
 // project route
 Route::get('/projects', [ProjectController::class, 'list'])->name('projects');
 Route::get('/projects/list', [ProjectController::class, 'list'])->name('projects.list');

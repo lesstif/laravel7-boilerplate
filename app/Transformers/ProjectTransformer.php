@@ -37,7 +37,7 @@ class ProjectTransformer extends TransformerAbstract
         $optimus = app()->make(Optimus::class);
 
         return [
-            'id'      => $optimus((int) $project->id),
+            'id'      => $optimus->encode((int) $project->id),
             'name'   => $project->name,
             'created_at'    => $project->created_at,
             'project_category'  => [

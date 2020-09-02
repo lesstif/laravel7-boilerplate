@@ -1,0 +1,21 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+    - ./phpstan-baseline.neon
+
+parameters:
+    paths:
+        - app
+
+    # The level 8 is the highest level
+    level: 5
+
+    ignoreErrors:
+        - '#Unsafe usage of new static#'
+    ## turn off, ignored errors do not occur in the result anymore phpstan throw errors.
+    reportUnmatchedIgnoredErrors: false
+
+    excludes_analyse:
+        - /app/Nova/Resource.php
+        - /app/Http/Middleware/Authenticate.php
+
+    checkMissingIterableValueType: false

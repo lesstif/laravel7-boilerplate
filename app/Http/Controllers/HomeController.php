@@ -22,7 +22,7 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -30,7 +30,7 @@ class HomeController extends Controller
 
         $now = Carbon::now();
 
-        $tasks_in_due = Task::where('assignee_id', '=', $user->id)
+        $tasks_in_due = Task::where('assignee_id', '=', $user->getAuthIdentifier())
             ->where('due_date', '>=', $now->addDays(15))
             ->get();
 
