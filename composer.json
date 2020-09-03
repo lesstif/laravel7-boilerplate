@@ -82,9 +82,6 @@
         ]
     },
     "repositories": [
-        {
-            "type": "path",
-            "url": "./nova"
-        }
+
     ]
 }
